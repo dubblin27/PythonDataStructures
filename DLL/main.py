@@ -21,7 +21,6 @@ class DLL:
             if currnode.data == aft_data:
                 break
             currnode = currnode.next
-        # print(currnode.data)
         newnode.next = currnode.next 
         currnode.next = newnode
         # print(newnode.next.data)
@@ -39,14 +38,32 @@ class DLL:
                 break
             currnode = currnode.next 
         currnode.next = newnode
+        newnode.next = None
     
+    def Pop_Start(self):
+        self.head = self.head.next
+
+    
+    def Pop_Mid(self):
+        pass
+
+    def Pop_End(self):
+        currnode = self.head
+        while currnode.next != None:
+            # print(currnode.data,"currnode . data inside while")
+            if currnode.next.next == None:
+                break
+            currnode = currnode.next 
+        # print(currnode.data, "currnodedata")
+        currnode.next = None 
+
     def print(self):
         currnode = self.head
         while currnode != None:
             print(currnode.data)
             currnode = currnode.next
-a = DLL()
 
+a = DLL()
 while True:
     print("enter option :\n 1.Push_start\n 2.Push_Mid\n 3.Push_End\n 4.Print \n 9.Break")
     opt = int(input("enter option : "))
@@ -60,8 +77,12 @@ while True:
     elif opt == 3:
         data = int(input("enter data : "))
         a.Push_End(data)
-    elif opt == 4:\
+    elif opt == 4:
         a.print()
+    elif opt == 5:
+        a.Pop_Start()
+    elif opt == 7:
+        a.Pop_End()
     elif opt == 9:
         break
 
