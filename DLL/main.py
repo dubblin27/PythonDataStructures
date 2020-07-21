@@ -44,12 +44,22 @@ class DLL:
         self.head = self.head.next
 
     
-    def Pop_Mid(self):
-        pass
+    def Pop_Mid(self,data):
+        currnode = self.head
+        while currnode.data != data :
+            if currnode.next.data == data:
+                break
+            currnode = currnode.next 
+        x_node = currnode.next
+        # print(currnode.data)
+        # print(x_node.data)
+        currnode.next = x_node.next
+        
+        x_node = None
 
     def Pop_End(self):
         currnode = self.head
-        while currnode.next != None:
+        while currnode != None:
             # print(currnode.data,"currnode . data inside while")
             if currnode.next.next == None:
                 break
@@ -59,13 +69,15 @@ class DLL:
 
     def print(self):
         currnode = self.head
+        print("printing : ")
         while currnode != None:
             print(currnode.data)
             currnode = currnode.next
+        print("printing end")
 
 a = DLL()
 while True:
-    print("enter option :\n 1.Push_start\n 2.Push_Mid\n 3.Push_End\n 4.Print \n 9.Break")
+    print("enter option :\n 1.Push_start\n 2.Push_Mid\n 3.Push_End\n 4. Pop_start\n 5.Pop_Mid\n 6.Pop_End\n 7.Print \n 8.Break")
     opt = int(input("enter option : "))
     if opt == 1:
         data = int(input("Enter data : "))
@@ -77,18 +89,23 @@ while True:
     elif opt == 3:
         data = int(input("enter data : "))
         a.Push_End(data)
-    elif opt == 4:
-        a.print()
-    elif opt == 5:
-        a.Pop_Start()
     elif opt == 7:
+        a.print()
+    elif opt == 4:
+        a.Pop_Start()
+    elif opt == 6:
         a.Pop_End()
-    elif opt == 9:
+    elif opt == 5 :
+        data =  int(input("enter data to pop : "))
+        a.Pop_Mid(data)
+    elif opt == 8:
         break
 
-
-# a.Push_start(1)
-# a.Push_start(2)
-# a.Push_start(3)
+# a.Push_End(1)
+# a.Push_End(2)
+# a.Push_End(3)
 # a.Push_End(4)
+# a.Push_End(5)
+# a.print()
+# a.Pop_Mid(3)
 # a.print()
